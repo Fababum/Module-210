@@ -1,0 +1,8 @@
+FROM nginx
+COPY ./index.html /usr/share/nginx/html/index.html
+
+#docker build -f 3.2_Webserver/Dockerfile.web -t ghcr.io/fababum/module-210:v1 3.2_Webserver
+#docker run -d -p 8080:80 --name module210 ghcr.io/fababum/module-210:v1
+#docker stop module210
+#docker rm module210
+#docker rmi ghcr.io/fababum/module-210:v1
