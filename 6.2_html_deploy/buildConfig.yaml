@@ -1,5 +1,5 @@
 kind: BuildConfig
-apiVersion: buil.openshift.io/v1
+apiVersion: build.openshift.io/v1
 metadata:
   name: html-openshift-app
   labels:
@@ -28,10 +28,10 @@ spec:
       sourceSecret:
         name: html-openshift-app-github
   triggers:
-    type: Generic
-    generic:
-      secretReferences:
-        name: html-openshift-app-generic-webhook-secret
-    type: ImageChange
-    type: ConfigChange
+    - type: Generic
+      generic:
+        secretReference:
+          name: html-openshift-app-generic-webhook-secret
+    - type: ImageChange
+    - type: ConfigChange
   runPolicy: Serial
