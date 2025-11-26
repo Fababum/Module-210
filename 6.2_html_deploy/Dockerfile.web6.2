@@ -6,7 +6,7 @@ COPY ./index.html /usr/share/nginx/html/index.html
 #docker build -f 6.2_html_deploy/Dockerfile.web6.2 -t ghcr.io/fababum/module-210:latest 6.2_html_deploy
     #ordner angeben wenn man noch nicht drin ist (6.2_html_deploy)   Git repo name   Ordner in Welchem der Content ist
 #docker images
-#docker run -d -p 8080:80 --name module210 ghcr.io/fababum/module-210:latest
+#docker run -d -p 8080:80 --name html-openshift-app ghcr.io/fababum/module-210:latest
 #docker ps -a
 #docker push ghcr.io/fababum/module-210:latest
 #docker stop module210
