@@ -1,5 +1,5 @@
 kind: imageStream # What kind of Kubenetees resource is it?
-apiVersion: image.openshift.io/v1 # service api version, this one is openshift specific
+apiVersion: image.openshift.io/v1 # imagestream api version, this one is openshift specific
 metadata:
   name: html-openshift-app # The name of the Deployment
   labels:

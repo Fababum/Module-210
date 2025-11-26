@@ -1,0 +1,37 @@
+kind: BuildConfig # What kind of Kubenetees resource is it?
+apiVersion: build.openshift.io/v1 # buildconfig api version, this one is openshift specific
+metadata:
+  name: html-openshift-app # The name of the Deployment
+  labels:
+    app: html-openshift-app # The name to do actions on this deployment
+    app.kubernetes.io/part-of: html-openshift-app # The name for the topology "cluster" design in openshift
+spec:
+  output: # Defines where it goes
+    to: # Where to put it
+      kind: ImageStreamTag # put it to imagestream
+      name: "html-openshift-app:latest" # name of the imagestream tag
+  resources: {} # Define resources if want more power
+  successfulBuildsHistoryLimit: 5 # how many builds are displayed in history
+  failedBuildsHistoryLimit: 5 # how many failed builds are displayed in history
+  strategy:
+    type: Source # from source, allowed from administrator
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag # from where
+        namespace: opeshift # from openshift imagestreamtag
+        name: "nginx:1.20-ubi7" # what image to take
+  source:
+    type: Git # take from git
+    git:
+      uri: "https://github.com/timo-schneider/module-210-block-6" # take from this git repo
+    contextDir: /app/web # what should be copied? (keep it to a minimal)
+    sourceSecret:
+      name: html-openshift-app-github # link the secret to log into private repo
+    triggers:
+      - type: Generic # always use generic, works for everything
+        generic:
+          secretReference:
+            name: html-openshift-app-generic-webhook-secret # the webhook secret
+      - type: ImageChange # image must be changed
+      - type: ConfigChange # config must be changed
+    runPolicy: Serial # Only one may run at a time, if two pushed and one not done finish first one
