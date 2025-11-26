@@ -1,5 +1,5 @@
 kind: Route
-apiVersion: route.openshift.io/latest
+apiVersion: route.openshift.io/v1
 metadata:
   name: html-openshift-app
   labels:

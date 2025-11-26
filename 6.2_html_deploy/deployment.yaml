@@ -1,5 +1,5 @@
 kind: Deployment
-apiVersion: apps/latest
+apiVersion: apps/v1
 metadata:
   name: html-openshift-app
   labels:
@@ -21,5 +21,5 @@ spec:
         ports:
         - containerPort: 8080
           protocol: TCP
-        image: ghcr.io/fababum/html-openshift-app:latest
+        image: ghcr.io/fababum/module-210:latest
         imagePullPolicy: Always
