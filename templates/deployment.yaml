@@ -1,0 +1,25 @@
+kind: Deployment # What kind of Kubenetees resource is it?
+apiVersion: apps/v1 # deployment api version
+metadata:
+  name: html-openshift-app # The name of the Deployment
+  labels:
+    app: html-openshift-app # The name to do actions on this deployment
+    app.kubernetes.io/part-of: html-openshift-app # The name for the topology "cluster" design in openshift
+spec:
+  replicas: 1 # How many instances are there?
+  selector:
+    matchLabels:
+      app: html-openshift-app # Connection from Deployment to Pot (Container)
+  template:
+    metadata:
+      labels:
+        app: html-openshift-app
+    spec:
+      containers: # The description of the container to be created
+        - name: html-openshift-app # Must be the same as selector.matchLables.app,
+          resources: {} # Defined resources, can be deleted if should be {}, CPU & memory can be modified
+          ports:
+            - containerPort: 8080 # Which port should be exposed
+              protocol: TCP # What protocol
+          image: ghcr.io/timo-schneider/html-openshift-app:v1 # Which image should it use?
+          imagePullPolicy: Always # If Pot gets destroyed, pull image again, elsehow take again from local storage

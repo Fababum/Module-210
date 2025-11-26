@@ -1,0 +1,8 @@
+kind: imageStream # What kind of Kubenetees resource is it?
+apiVersion: image.openshift.io/v1 # service api version, this one is openshift specific
+metadata:
+  name: html-openshift-app # The name of the Deployment
+  labels:
+    app: html-openshift-app # The name to do actions on this deployment
+    app.kubernetes.io/part-of: html-openshift-app # The name for the topology "cluster" design in openshift
+spec: # placeholder, required but can be empty

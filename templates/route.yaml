@@ -1,0 +1,16 @@
+kind: Route # What kind of Kubenetees resource is it?
+apiVersion: route.openshift.io/v1 # service api version, this one is openshift specific
+metadata:
+  name: html-openshift-app # The name of the Deployment
+  labels:
+    app: html-openshift-app # The name to do actions on this deployment
+    app.kubernetes.io/part-of: html-openshift-app # The name for the topology "cluster" design in openshift
+spec:
+  to:
+    kind: Service # Connection to what kind? (in this case service)
+    name: html-openshift-app # Connect to kind? (in this case the service name "html...")
+  port:
+    targetPort: html-openshift-app # must be the same name as defined in service
+  tls: # enforce https encrypted connection
+    termination: edge # terminate endpoint
+    insecureEdgeTerminationPolicy: Redirect # if request is https redirect to page, http denied

@@ -1,0 +1,15 @@
+kind: Service # What kind of Kubenetees resource is it?
+apiVersion: v1 # service api version
+metadata:
+  name: html-openshift-app # The name of the Deployment
+  labels:
+    app: html-openshift-app # The name to do actions on this deployment
+    app.kubernetes.io/part-of: html-openshift-app # The name for the topology "cluster" design in openshift
+spec:
+  ports:
+    - name: html-openshift-app # Name of the port
+      protocol: TCP # Protocol of exposed port
+      port: 8080 # Containerport
+      targetPort: 8080 # Exposed port
+  selector:
+    app: html-openshift-app # This service is for all Pots which got this name

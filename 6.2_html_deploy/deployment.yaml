@@ -21,5 +21,5 @@ spec:
         ports:
         - containerPort: 8080
           protocol: TCP
-        image: ghcr.io/fababum/module-210:latest
+        image: image-registry.openshift-image-registry.svc:5000/254500-fabspi/html-openshift-app:latest
         imagePullPolicy: Always
