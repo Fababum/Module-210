@@ -23,7 +23,7 @@ spec:
   source:
     type: Git # take from git
     git:
-      uri: "https://github.com/timo-schneider/module-210-block-6" # take from this git repo
+      uri: "https://github.com/fababum/module-210" # take from this git repo
     contextDir: /app/web # what should be copied? (keep it to a minimal)
     sourceSecret:
       name: html-openshift-app-github # link the secret to log into private repo

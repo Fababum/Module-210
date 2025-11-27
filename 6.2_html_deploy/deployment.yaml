@@ -16,10 +16,17 @@ spec:
         app: html-openshift-app
     spec:
       containers:
-      - name: html-openshift-app
-        resources: {}
-        ports:
-        - containerPort: 8080
-          protocol: TCP
-        image: image-registry.openshift-image-registry.svc:5000/254500-fabspi/html-openshift-app:latest
-        imagePullPolicy: Always
+        - name: html-openshift-app
+          image: image-registry.openshift-image-registry.svc:5000/254500-fabspi/html-openshift-app:latest
+          imagePullPolicy: Always
+          resources: {}
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          volumeMounts:
+            - name: html-openshift-app-data
+              mountPath: /opt/app-root/src/data
+      volumes:
+        - name: html-openshift-app-data
+          persistentVolumeClaim:
+            claimName: html-openshift-app-storage

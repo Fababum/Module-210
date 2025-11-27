@@ -21,5 +21,5 @@ spec:
           ports:
             - containerPort: 8080 # Which port should be exposed
               protocol: TCP # What protocol
-          image: ghcr.io/timo-schneider/html-openshift-app:v1 # Which image should it use?
+          image: image-registry.openshift-image-registry.svc:5000/254500-fabspi/html-openshift-app:latest # Which image should it use?
           imagePullPolicy: Always # If Pot gets destroyed, pull image again, elsehow take again from local storage
