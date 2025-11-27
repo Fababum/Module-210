@@ -1,18 +1,23 @@
 kind: HorizontalPodAutoscaler
-apiVersion: autoscaling/v1
+apiVersion: autoscaling/v2
 metadata:
-  name: html-openshift-app
+  name: html-openshift-app-hpa
+  labels:
+    app: html-openshift-app
+    app.kubernetes.io/part-of: html-openshift-app
 spec:
   scaleTargetRef:
-    apiVersion: apps/v1
     kind: Deployment
     name: html-openshift-app
+    apiVersion: apps/v1
   minReplicas: 1
-  maxReplicas: 10
+  maxReplicas: 2
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 50
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+ 
+ 

@@ -25,8 +25,8 @@ spec:
     git:
       uri: 'https://github.com/Fababum/Module-210.git'  
     contextDir: /6.2_html_deploy/app
-    sourceSecret:
-      name: html-openshift-app-github
+   # sourceSecret:
+  #    name: html-openshift-app-github
   triggers:
     - type: Generic
       generic:
